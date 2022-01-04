@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment';
-function TopNews() {
-    let [topic, setTopic] = useState('');
+function TopNews(props) {
     let [newsArr, setNewsArr] = useState([]);
-    let [useCountry, setUseCountry] = useState('&country=in')
+    
 
 
     useEffect(() => {
         const apikey = '86cc46fb6da4448ba0395a6b9114eeca';
-        const url = `https://newsapi.org/v2/top-headlines?q=${topic}${useCountry}&apiKey=${apikey}`;
+        const url = `https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${apikey}`;
 
         let fetchData = async () => {
             let response = await fetch(url);
@@ -17,7 +16,7 @@ function TopNews() {
         };
         fetchData();
     }
-        , [topic]);
+        , [props.topic, props.category, props.useCountry]);
 
     return newsArr.map((element) => {
 
