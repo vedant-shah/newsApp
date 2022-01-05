@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 function Navbar(props) {
 
-  const [head, setHead] = useState(props.head);
+  
   function toggleCategory(category) {
     props.category(category);
-    setHead(category.substring(10));
+    props.setHead(category.substring(10));
     props.useCountry('&country=in')
     props.topic('');
   }
@@ -16,14 +16,14 @@ function Navbar(props) {
       props.topic(topic);
       props.category('&category=');
       props.useCountry('');
-      setHead(topic);
+      props.setHead(topic);
       document.getElementById('searchBox').value = '';
     }
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <div className="navbar-brand" onClick={() => { props.category('&category='); setHead("Top Headlines"); props.useCountry('&country=in'); props.topic(''); }}>
+        <div className="navbar-brand" onClick={() => { props.category('&category='); props.setHead("General"); props.useCountry('&country=in'); props.topic(''); }} style={{cursor:'pointer'}}>
           NewsApp
         </div>
         <button
@@ -39,7 +39,7 @@ function Navbar(props) {
         <div className="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <div className="nav-link active" aria-current="page">
-              {head}
+              {props.head}
             </div>
 
             <li className="nav-item dropdown">
@@ -47,11 +47,11 @@ function Navbar(props) {
                 Categories
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Business')}>Business</div></li>
-                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Entertainment')}>Entertainment</div></li>
-                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Science')}>Science</div></li>
-                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Sports')}>Sports</div></li>
-                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Health')}>Health</div></li>
+                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Business')} style={{cursor:'pointer'}}>Business</div></li>
+                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Entertainment')} style={{cursor:'pointer'}}>Entertainment</div></li>
+                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Science')} style={{cursor:'pointer'}}>Science</div></li>
+                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Sports')} style={{cursor:'pointer'}}>Sports</div></li>
+                <li><div className="dropdown-item" onClick={() => toggleCategory('&category=Health')} style={{cursor:'pointer'}}>Health</div></li>
               </ul>
             </li>
           </div>
