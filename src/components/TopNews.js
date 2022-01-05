@@ -8,17 +8,19 @@ function TopNews(props) {
     useEffect(() => {
         const apikey = '86cc46fb6da4448ba0395a6b9114eeca';
         const url = `https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${apikey}`;
+        props.setloading(true);
 
         let fetchData = async () => {
             let response = await fetch(url);
             let json = await response.json();
             setNewsArr(json.articles);
+            props.setloading(false);
         };
         fetchData();
     }
         , [props.topic, props.category, props.useCountry]);
 
-    return newsArr.map((element) => {
+    return !props.loading && newsArr.map((element) => {
 
         return (
             <div className='container my-4 text-start' key={element.url} >

@@ -16,6 +16,8 @@ function Navbar(props) {
       props.topic(topic);
       props.category('&category=');
       props.useCountry('');
+      setHead(topic);
+      document.getElementById('searchBox').value = '';
     }
   }
   return (
