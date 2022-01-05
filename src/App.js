@@ -12,7 +12,7 @@ function App() {
   let [category, setCategory] = useState('&category=');
   const [loading, setLoading] = useState(false);
   const [head, setHead] = useState('General');
-
+  let apikey = process.env.REACT_APP_NEWS_API;
 
   return (
     <div className="App">
@@ -20,7 +20,7 @@ function App() {
       <div className="container my-3">
         <h1 id="heading">Top Headlines - {head}</h1>
         {loading && <Spinner />}
-        <TopNews topic={topic} useCountry={useCountry} category={category} setloading={setLoading} loading={loading} />
+        <TopNews topic={topic} useCountry={useCountry} category={category} setloading={setLoading} loading={loading} apikey={apikey} />
       </div>
     </div>
   );

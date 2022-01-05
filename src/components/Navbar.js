@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Navbar(props) {
 
@@ -12,7 +12,7 @@ function Navbar(props) {
 
   function toggleTopic() {
     let topic = document.getElementById('searchBox').value;
-    if (topic != '') {
+    if (topic !== '') {
       props.topic(topic);
       props.category('&category=');
       props.useCountry('');
@@ -43,7 +43,7 @@ function Navbar(props) {
             </div>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categories
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">

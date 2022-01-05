@@ -6,8 +6,7 @@ function TopNews(props) {
 
 
     useEffect(() => {
-        const apikey = '86cc46fb6da4448ba0395a6b9114eeca';
-        const url = `https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${apikey}`;
+        const url = `https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${props.apikey}`;
         props.setloading(true);
 
         let fetchData = async () => {
@@ -26,7 +25,7 @@ function TopNews(props) {
             <div className='container my-4 text-start' key={element.url} >
                 <div className="card mx-auto flex-row col-xl-10 col-md-12 col-lg-12 col-sm-12" style={{ borderRadius: '8px' }}>
                     <div className="card-body col-sd-12" style={{ width: '70%' }}>
-                        <a style={{ textDecoration: 'none', color: 'white' }} target="_blank" href={element.url} > <h5 className="card-title">{element.title}</h5></a>
+                        <a style={{ textDecoration: 'none', color: 'white' }}  rel='noreferrer' target="_blank" href={element.url} > <h5 className="card-title">{element.title}</h5></a>
                         <p className="card-text">{element.description}</p>
                         <p>{moment.utc(element.publishedAt).local().startOf('day').fromNow()}</p>
                     </div>
