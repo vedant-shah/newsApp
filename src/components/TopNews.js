@@ -3,8 +3,6 @@ import moment from 'moment';
 function TopNews(props) {
     let [newsArr, setNewsArr] = useState([]);
     
-
-
     useEffect(() => {
         const url = `https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${props.apikey}`;
         props.setloading(true);
