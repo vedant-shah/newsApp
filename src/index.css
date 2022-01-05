@@ -5,8 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #202124;
+  color: white;
 }
-
+.card{
+  background-color: #202124;
+  border-color: #9aa0a6;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+.card p{
+  color: #9aa0a6;
+}
+#heading{
+  font-family: san;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

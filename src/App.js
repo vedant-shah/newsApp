@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Navbar category={setCategory} setHead={setHead} head={head} topic={setTopic} useCountry={setUseCountry} />
       <div className="container my-3">
-        <h1>Top Headlines - {head}</h1>
+        <h1 id="heading">Top Headlines - {head}</h1>
         {loading && <Spinner />}
         <TopNews topic={topic} useCountry={useCountry} category={category} setloading={setLoading} loading={loading} />
       </div>
