@@ -9,7 +9,7 @@ A user can see:
 
 
 ## Deployment:
-
+This project could not be deployed since the API restricted usage to local host only, commonly reffered to as the CORS issue.
 
 ## Previews:
 
