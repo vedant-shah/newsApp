@@ -4,7 +4,7 @@ function TopNews(props) {
   let [newsArr, setNewsArr] = useState([]);
 
   useEffect(() => {
-    const url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${props.apikey}`;
+    const url = `https://cors-proxy.htmldriven.com/?url=https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${props.apikey}`;
     props.setloading(true);
 
     let fetchData = async () => {
