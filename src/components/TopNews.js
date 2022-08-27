@@ -1,38 +1,62 @@
-import React, { useState, useEffect } from 'react'
-import moment from 'moment';
+import React, { useState, useEffect } from "react";
+import moment from "moment";
 function TopNews(props) {
-    let [newsArr, setNewsArr] = useState([]);
-    
-    useEffect(() => {
-        const url = `https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${props.apikey}`;
-        props.setloading(true);
+  let [newsArr, setNewsArr] = useState([]);
 
-        let fetchData = async () => {
-            let response = await fetch(url);
-            let json = await response.json();
-            setNewsArr(json.articles);
-            props.setloading(false);
-        };
-        fetchData();
-    }
-        , [props.topic, props.category, props.useCountry]);
+  useEffect(() => {
+    const url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?q=${props.topic}${props.useCountry}${props.category}&apiKey=${props.apikey}`;
+    props.setloading(true);
 
-    return !props.loading && newsArr.map((element) => {
+    let fetchData = async () => {
+      let response = await fetch(url);
+      let json = await response.json();
+      setNewsArr(json.articles);
+      props.setloading(false);
+    };
+    fetchData();
+  }, [props.topic, props.category, props.useCountry]);
 
-        return (
-            <div className='container my-4 text-start' key={element.url} >
-                <div className="card mx-auto flex-row col-xl-10 col-md-12 col-lg-12 col-sm-12" style={{ borderRadius: '8px' }}>
-                    <div className="card-body col-sd-12" style={{ width: '70%' }}>
-                        <a style={{ textDecoration: 'none', color: 'white' }}  rel='noreferrer' target="_blank" href={element.url} > <h5 className="card-title">{element.title}</h5></a>
-                        <p className="card-text">{element.description}</p>
-                        <p>{moment.utc(element.publishedAt).local().startOf('day').fromNow()}</p>
-                    </div>
-                    <img className='img-fluid' src={element.urlToImage} alt="" style={{ width: '20%', padding: '1% 1% 1%', borderRadius: '22px' }} />
-                </div>
+  return (
+    !props.loading &&
+    newsArr.map((element) => {
+      return (
+        <div className="container my-4 text-start" key={element.url}>
+          <div
+            className="card mx-auto flex-row col-xl-10 col-md-12 col-lg-12 col-sm-12"
+            style={{ borderRadius: "8px" }}>
+            <div className="card-body col-sd-12" style={{ width: "70%" }}>
+              <a
+                style={{ textDecoration: "none", color: "white" }}
+                rel="noreferrer"
+                target="_blank"
+                href={element.url}>
+                {" "}
+                <h5 className="card-title">{element.title}</h5>
+              </a>
+              <p className="card-text">{element.description}</p>
+              <p>
+                {moment
+                  .utc(element.publishedAt)
+                  .local()
+                  .startOf("day")
+                  .fromNow()}
+              </p>
             </div>
-        )
-    });
-
+            <img
+              className="img-fluid"
+              src={element.urlToImage}
+              alt=""
+              style={{
+                width: "20%",
+                padding: "1% 1% 1%",
+                borderRadius: "22px",
+              }}
+            />
+          </div>
+        </div>
+      );
+    })
+  );
 }
 
-export default TopNews
+export default TopNews;
